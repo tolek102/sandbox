@@ -10,11 +10,10 @@ import java.util.List;
 public class BooksController implements BooksInterface {
 
     @GetMapping("/books")
-    public List<Book> getAllBooks()
-    {
+    public List<Book> getAllBooks() {
         return Arrays.asList((new Book(1L, "Book11215", "Autjor blabal")),
-                            (new Book(2L, "Book2222222", "Autjor asdasdasdsadsa")),
-                            (new Book(3L, "Book333333", "Autjor sdsdsdd")));
+                (new Book(2L, "Book2222222", "Autjor asdasdasdsadsa")),
+                (new Book(3L, "Book333333", "Autjor sdsdsdd")));
 
     }
 }
