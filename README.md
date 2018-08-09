@@ -10,7 +10,7 @@ all new features probable will be tag with new version
 # tolls
 created in InteliJ IDE 2018
 
-java 10
+java 1.8
 
 spring boot 2.1.0 M1
 
