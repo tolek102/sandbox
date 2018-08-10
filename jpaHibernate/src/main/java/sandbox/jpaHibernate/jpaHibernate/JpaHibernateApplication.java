@@ -26,8 +26,10 @@ public class JpaHibernateApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Course course = courseRepository.findById(10001L);
-		logger.info("\u001B[46m Course 10001 -> {}", course);
+		logger.info("\u001B[46m Course 10001 -> {}" + "\u001B[0m", course);
 
-		courseRepository.deleteById(10001L);
+		courseRepository.deleteById(10002L);
+
+		courseRepository.save(new Course("Some new course"));
 	}
 }
