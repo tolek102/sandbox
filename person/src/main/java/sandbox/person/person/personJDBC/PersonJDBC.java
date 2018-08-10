@@ -1,4 +1,4 @@
-package com.sandbox.sandbox.person.personJDBC;
+package sandbox.person.person.personJDBC;
 
 import java.util.Date;
 

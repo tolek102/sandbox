@@ -1,4 +1,4 @@
-package com.sandbox.sandbox.person.personJPA;
+package sandbox.person.person.personJPA;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,0 +1,4 @@
+INSERT INTO COURSE(ID, NAME) VALUES(10001, 'Some course no 1 name');
+INSERT INTO COURSE(ID, NAME) VALUES(10002, 'Some course no 2 name');
+INSERT INTO COURSE(ID, NAME) VALUES(10003, 'Some course no 3 name');
+INSERT INTO COURSE(ID, NAME) VALUES(10004, 'Some course no 4 name');

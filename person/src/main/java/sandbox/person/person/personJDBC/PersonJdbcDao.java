@@ -1,4 +1,4 @@
-package com.sandbox.sandbox.person.personJDBC;
+package sandbox.person.person.personJDBC;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
+
 
 @Repository
 public class PersonJdbcDao {
