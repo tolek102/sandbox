@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import sandbox.jpaHibernate.jpaHibernate.entity.Course;
+import sandbox.jpaHibernate.jpaHibernate.entity.Review;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -53,6 +55,35 @@ public class CourseRepository {
         entityManager.refresh(course1);
 
         entityManager.flush();
+    }
+
+    public void addHardcodedReviewsForCourse(){
+        Course course = findById(10003L);
+        logger.info("\u001B[45m\u001B[30m course.getRwviews() -> {} \u001B[0m",course.getReviews() );
+
+        Review review1 = new Review("11", "New Review 11");
+        Review review2 = new Review("22", "New Review 22");
+
+        course.addReview(review1);
+        review1.setCourse(course);
+
+        course.addReview(review2);
+        review2.setCourse(course);
+
+        entityManager.persist(review1);
+        entityManager.persist(review2);
+    }
+
+    public void addReviewsForCourse(Long courseId, List<Review> reviews){
+        Course course = findById(courseId);
+        logger.info("\u001B[45m\u001B[30m course.getRwviews() -> {} \u001B[0m",course.getReviews() );
+
+        for(Review review:reviews){
+            course.addReview(review);
+            review.setCourse(course);
+            entityManager.persist(review);
+        }
+
     }
 
 }

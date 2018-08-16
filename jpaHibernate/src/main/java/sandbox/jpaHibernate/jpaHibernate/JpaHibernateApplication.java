@@ -8,7 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import sandbox.jpaHibernate.jpaHibernate.entity.Course;
+import sandbox.jpaHibernate.jpaHibernate.entity.Review;
 import sandbox.jpaHibernate.jpaHibernate.repository.CourseRepository;
+import sandbox.jpaHibernate.jpaHibernate.repository.StudentRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class JpaHibernateApplication implements CommandLineRunner {
@@ -17,6 +22,9 @@ public class JpaHibernateApplication implements CommandLineRunner {
 
 	@Autowired
 	private CourseRepository courseRepository;
+
+	@Autowired
+	private StudentRepository studentRepository;
 
 	public static void main(String[] args) {
 
@@ -32,8 +40,18 @@ public class JpaHibernateApplication implements CommandLineRunner {
 //
 //		courseRepository.save(new Course("Some new course"));
 
-		courseRepository.playWithEntityManager();
+//		courseRepository.playWithEntityManager();
 
+//		studentRepository.saveStudentWithPassport();
+
+//		courseRepository.addHardcodedReviewsForCourse();
+
+
+		List<Review> reviews = new ArrayList<>();
+		reviews.add(new Review("11", "New Review 11"));
+		reviews.add(new Review("22", "New Review 22"));
+
+		courseRepository.addReviewsForCourse(10001L,reviews);
 
 	}
 }

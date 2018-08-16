@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@NamedQuery(name="get_all_courses", query =  "Select c From Courses c")
-public class Course {
+public class Student {
 
     @Id
     @GeneratedValue
@@ -19,18 +18,28 @@ public class Course {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "course")
+    @OneToOne(fetch = FetchType.LAZY)
+    private Passport passport;
+
+    @ManyToMany
+    @JoinTable(name = "STUDENT_COURSE",
+        joinColumns = @JoinColumn(name = "STUDENT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "COURSE_ID")
+    )
+    private List<Course> courses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "student")
     private List<Review> reviews = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "courses")
-    private List<Student> students = new ArrayList<>();
+    public Student() {
+    }
 
-    @UpdateTimestamp
-    private LocalDateTime lastUpdatedDate;
-    @CreationTimestamp
-    private LocalDateTime createdDate;
+    public Passport getPassport() {
+        return passport;
+    }
 
-    public Course() {
+    public void setPassport(Passport passport) {
+        this.passport = passport;
     }
 
     public Long getId() {
@@ -45,8 +54,16 @@ public class Course {
         this.name = name;
     }
 
-    public Course(String name) {
+    public Student(String name) {
         this.name = name;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void addCourses(Course courses) {
+        this.courses.add(courses);
     }
 
     public List<Review> getReviews() {
@@ -61,17 +78,9 @@ public class Course {
         this.reviews.remove(review);
     }
 
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void addStudents(Student students) {
-        this.students.add(students);
-    }
-
     @Override
     public String toString() {
-        return "Course{" +
+        return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
