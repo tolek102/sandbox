@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
-@NamedQuery(name="get_all_courses", query =  "Select c From Courses c")
+//@NamedQuery(name="get_all_courses", query =  "Select c From Courses c")
 public class Course {
 
     @Id
